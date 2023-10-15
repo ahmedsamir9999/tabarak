@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tabarak/presentation/screens/Splash_view.dart';
+import 'App/presentation/screens/Splash_view.dart';
+
 
 void main() {
   runApp(const MyApp());

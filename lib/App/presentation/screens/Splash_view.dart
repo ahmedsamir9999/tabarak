@@ -34,7 +34,7 @@ class SplashView extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  Image.asset("lib/core/image/Group 35.png"),
+                  Image.asset("lib/core/assets/image/Group 35.png"),
                 ],
               ),
             ),
@@ -44,7 +44,7 @@ class SplashView extends StatelessWidget {
               right: 0,
               child: Center(
                 child: InkWell(
-                  onTap:() =>  Navigator.push(
+                  onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => Home(),

@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
               children: [
                 InkWell(
                     // onTap: () => ,
-                    child: Image.asset("lib/core/image/menu.png")),
+                    child: Image.asset("lib/core/assets/image/menu.png")),
                 const SizedBox(
                   width: 20,
                 ),
@@ -29,7 +29,7 @@ class Home extends StatelessWidget {
                 const Spacer(),
                 InkWell(
                     // onTap: () => ,
-                    child: Image.asset("lib/core/image/search.png")),
+                    child: Image.asset("lib/core/assets/image/search.png")),
               ],
             ),
             const SizedBox(
@@ -55,7 +55,7 @@ class Home extends StatelessWidget {
               height: 131,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("lib/core/image/Frame 30.png")),
+                    image: AssetImage("lib/core/assets/image/Frame 30.png")),
               ),
               child: const Padding(
                 padding: EdgeInsets.all(20.0),
