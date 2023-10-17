@@ -7,7 +7,7 @@ class GetAzanTimeByCityUseCase {
 
   GetAzanTimeByCityUseCase(this.baseAzanRepository);
 
-  Future<Azan> execute() async {
-    return await baseAzanRepository.getAzanTimeByCity();
+  Future<Azan> execute(String city, String country) async {
+    return await baseAzanRepository.getAzanTimeByCity(city, country);
   }
 }
