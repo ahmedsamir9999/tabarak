@@ -2,7 +2,7 @@ import 'package:tabarak/App/domain/repository/base_azan_repository.dart';
 
 import '../entities/azan.dart';
 
-class GetAzanTimeByCityUseCase {
+class GetAzanTimeByCityUseCase  {
   final BaseAzanRepository baseAzanRepository;
 
   GetAzanTimeByCityUseCase(this.baseAzanRepository);

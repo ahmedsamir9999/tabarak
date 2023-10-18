@@ -19,7 +19,7 @@ class AzanModel extends Azan {
       asr: json['data']['timings']['Asr'],
       maghrib: json['data']['timings']['Maghrib'],
       isha: json['data']['timings']['Isha'],
-      dayAr: json['data']['timings']['hijri']['weekday']['en'],
-      dayEn: json['data']['timings']['hijri']['weekday']['ar'],
+      dayAr: json['data']['date']['hijri']['weekday']['en'],
+      dayEn: json['data']['date']['hijri']['weekday']['ar'],
       date: json['data']['date']['readable']);
 }
