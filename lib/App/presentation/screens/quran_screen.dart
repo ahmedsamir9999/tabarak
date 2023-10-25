@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quran/quran.dart' as quran;
 
+import '../../../core/utils/Style.dart';
+
 class QuranScreen extends StatelessWidget {
   const QuranScreen({super.key});
 
@@ -41,12 +43,13 @@ class QuranScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
+                 Text(
                   "Tanvir Ahassan",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
+                  style: Style.quranFont
+                      //color: Colors.black,
+                      //fontSize: ,
+                      //fontWeight: FontWeight.bold
+
                 ),
                 const SizedBox(
                   height: 20,

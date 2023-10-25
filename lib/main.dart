@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'App/presentation/screens/Splash_view.dart';
+import 'App/presentation/screens/home.dart';
+import 'App/presentation/screens/quran_screen.dart';
 
 
 void main() {
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashView(),
+      home: Home(),
     );
   }
 }
