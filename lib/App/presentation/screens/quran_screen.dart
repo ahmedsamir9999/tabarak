@@ -147,7 +147,7 @@ class QuranScreen extends StatelessWidget {
                         )),
                   ],
                 ),
-                Divider(
+                const Divider(
                   color: Colors.black,
                 ),
                 SizedBox(
