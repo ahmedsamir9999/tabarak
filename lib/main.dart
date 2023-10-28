@@ -3,6 +3,7 @@ import 'package:tabarak/core/utils/responsive.dart';
 
 import 'App/presentation/screens/Splash_view.dart';
 import 'App/presentation/screens/home.dart';
+import 'App/presentation/screens/page_of_elmoshaf.dart';
 import 'App/presentation/screens/quran_screen.dart';
 
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
 
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      //home: Home(),
+      home: PageOfElmoshaf(),
     );
   }
 }
