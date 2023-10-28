@@ -6,5 +6,9 @@ class Style {
   static const blackColor = Colors.black;
   static const whiteColor = Colors.white;
   static const quranFont =
-      TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold);
+      TextStyle(
+          fontSize: 24,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+      );
 }
