@@ -3,8 +3,8 @@ import 'package:quran/quran.dart' as quran;
 import 'package:tabarak/core/utils/Style.dart';
 
 class PageOfElmoshaf extends StatelessWidget {
-   PageOfElmoshaf({super.key});
-String t="asdasd";
+  const PageOfElmoshaf({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
