@@ -18,20 +18,27 @@ class card extends StatelessWidget {
           children: [
             Spacer(),
             Text(nameSura,style: TextStyle(
-              fontSize: 26
+              fontSize: 26,
+              color: Colors.white
             )),
             Spacer(),
             const Text("The opening",style: TextStyle(
-              fontSize: 16
+              fontSize: 16,
+              color: Colors.white
+
             )),
+            Spacer(),
             Divider(
-              height: 10,
-              color: Colors.black,
+              height: 7,
+              color: Colors.white,
+              indent: 70,
+              endIndent: 70,
             ),
             Spacer(),
-            Text("meccan $verses verses",
+            Text(" $verses ",
             style: TextStyle(
-              fontSize: 14
+              fontSize: 14,
+              color: Colors.white
             )),
             Spacer(),
             const Image(image: AssetImage("lib/core/assets/image/opening.png")),

@@ -24,7 +24,8 @@ class ItemForeVerse extends StatelessWidget {
         horizontal: 15,
       ),
       child: Container(
-        color: Colors.grey[200],
+        // color: Colors.grey[100],
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -32,7 +33,8 @@ class ItemForeVerse extends StatelessWidget {
               width: double.infinity,
               height: 50,
               decoration: BoxDecoration(
-                color: Colors.purple[100],
+                // color: Colors.purple[100],
+                color: Colors.grey[200],
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               child: Row(
@@ -86,6 +88,10 @@ class ItemForeVerse extends StatelessWidget {
                 textAlign: TextAlign.right,
               ),
             ),
+            Divider(color: Colors.grey[200],
+            thickness: 1.5,
+            ),
+            SizedBox(height: 15,)
           ],
         ),
       ),

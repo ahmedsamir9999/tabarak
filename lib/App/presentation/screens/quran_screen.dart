@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
+import 'package:tabarak/App/presentation/screens/page_of_elmoshaf.dart';
 
 import '../../../core/utils/responsive.dart';
 import '../../../core/utils/style.dart';
@@ -124,7 +125,6 @@ class QuranScreen extends StatelessWidget {
                       TextButton(
                           onPressed: () {
                             prov.changePage(1);
-
                           },
                           child: Text(
                             "Para",
@@ -175,9 +175,65 @@ class QuranScreen extends StatelessWidget {
                     child: ChangeNotifierProvider(
                       create: (context) => HomeProvider(),
                       child: PageView(
-                        controller:prov.pageController,
+                        controller: prov.pageController,
                         onPageChanged: (value) => prov.pageController,
                         children: [
+                          ListView.separated(
+                            separatorBuilder: (context, index) => Column(
+                              children: [
+                                Divider(
+                                  color: Colors.grey[200],
+                                  height: 50,
+                                  thickness: 1.5,
+                                )
+                              ],
+                            ),
+                            itemBuilder: (context, index) => InkWell(
+                              child: SizedBox(
+                                height: 60,
+                                width: 100,
+                                child: Row(
+                                  children: [
+                                    Text(quran.getVerseEndSymbol(index + 1),
+                                        style: TextStyle(
+                                            fontSize: Responsive.fontSize(
+                                                context, 3))),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(quran.getSurahName(index + 1),
+                                            style: TextStyle(
+                                                fontSize: Responsive.fontSize(
+                                                    context, 2))),
+                                        Text(
+                                            '${quran.getVerseCount(18)} : عدد الآيات ',
+                                            style: TextStyle(
+                                                fontSize: Responsive.fontSize(
+                                                    context, 2))),
+                                      ],
+                                    ),
+                                    const Spacer(),
+                                    Text(
+                                        quran.getSurahNameArabic(index + 1),
+                                        style: TextStyle(
+                                            fontSize:
+                                            Responsive.fontSize(context, 2))),
+                                  ],
+                                ),
+                              ),
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      PageOfElmoshaf(index: index),
+                                ));
+                              },
+                            ),
+                            itemCount: 114,
+                          ),
                           ListView.separated(
                             separatorBuilder: (context, index) =>
                                 const SizedBox(
@@ -186,7 +242,8 @@ class QuranScreen extends StatelessWidget {
                             itemBuilder: (context, index) => Container(
                               height: 100,
                               width: 100,
-                              child: Text('${quran.getSurahName(index + 1)}',
+                              child: Text(
+                                  '${quran.getSurahNameArabic(index + 1)}',
                                   style: TextStyle(
                                       fontSize:
                                           Responsive.fontSize(context, 2))),
@@ -195,22 +252,7 @@ class QuranScreen extends StatelessWidget {
                           ),
                           ListView.separated(
                             separatorBuilder: (context, index) =>
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            itemBuilder: (context, index) => Container(
-                              height: 100,
-                              width: 100,
-                              child: Text('${quran.getSurahNameArabic(index + 1)}',
-                                  style: TextStyle(
-                                      fontSize:
-                                      Responsive.fontSize(context, 2))),
-                            ),
-                            itemCount: 114,
-                          ),
-                          ListView.separated(
-                            separatorBuilder: (context, index) =>
-                            const SizedBox(
+                                const SizedBox(
                               height: 10,
                             ),
                             itemBuilder: (context, index) => Container(
@@ -219,26 +261,52 @@ class QuranScreen extends StatelessWidget {
                               child: Text('${quran.getPageData(index + 1)}',
                                   style: TextStyle(
                                       fontSize:
-                                      Responsive.fontSize(context, 2))),
+                                          Responsive.fontSize(context, 2))),
                             ),
                             itemCount: 114,
                           ),
                           ListView.separated(
-                            separatorBuilder: (context, index) =>
-                            const SizedBox(
-                              height: 10,
+                            separatorBuilder: (context, index) => Column(
+                              children: [
+                                Divider(
+                                  color: Colors.grey[200],
+                                  height: 50,
+                                  thickness: 1.5,
+                                )
+                              ],
                             ),
                             itemBuilder: (context, index) => Container(
-                              height: 100,
+                              height: 60,
                               width: 100,
-                              child: Text('${quran.getVerseCount(index + 1)}',
-                                  style: TextStyle(
-                                      fontSize:
-                                      Responsive.fontSize(context, 2))),
+                              child: Row(
+                                children: [
+                                  Text(quran.getVerseEndSymbol(index + 1),
+                                      style: TextStyle(
+                                          fontSize:
+                                              Responsive.fontSize(context, 3))),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(quran.getSurahNameArabic(index + 1),
+                                          style: TextStyle(
+                                              fontSize: Responsive.fontSize(
+                                                  context, 2))),
+                                      Text(
+                                          '${quran.getVerseCount(18)} : عدد الآيات ',
+                                          style: TextStyle(
+                                              fontSize: Responsive.fontSize(
+                                                  context, 2))),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                             itemCount: 114,
                           ),
-
                         ],
                       ),
                     ),
