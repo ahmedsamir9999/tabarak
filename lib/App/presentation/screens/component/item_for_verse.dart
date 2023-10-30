@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:quran/quran.dart';
@@ -7,6 +8,8 @@ import '../../../../core/utils/Style.dart';
 class ItemForeVerse extends StatelessWidget {
   int index;
   int numOfSurah;
+
+  final player = AudioPlayer();
 
   ItemForeVerse({
     super.key,
@@ -47,7 +50,11 @@ class ItemForeVerse extends StatelessWidget {
                     icon: Icon(Icons.share),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: ()async
+                    {
+                      await player.play(UrlSource(quran.getAudioURLByVerse(numOfSurah, index+1)));
+                      print(quran.getAudioURLByVerse(numOfSurah, index+1));
+                    },
                     icon: Icon(Icons.play_arrow),
                   ),
                   IconButton(
