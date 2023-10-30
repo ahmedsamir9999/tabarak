@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:tabarak/core/utils/Style.dart';
 
+import 'component/item_for_verse.dart';
+
 class PageOfElmoshaf extends StatelessWidget {
   const PageOfElmoshaf({super.key});
 
@@ -9,7 +11,7 @@ class PageOfElmoshaf extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Style.mainColor,
+        backgroundColor: Colors.deepPurpleAccent,
         leading: IconButton(
           onPressed: () {},
           icon: Icon(
@@ -38,67 +40,63 @@ class PageOfElmoshaf extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Container(
-              width: 326,
-              height: 131,
+              height: 320,
+              width: double.infinity,
               decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("lib/core/assets/image/Frame 30.png")),
-              ),
+                  image: DecorationImage(
+                      image: AssetImage("lib/core/assets/image/Card.png"))),
               child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Icon(Icons.confirmation_number_sharp,
-                            color: Colors.white),
-                        Text("Last Read",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            )),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(quran.getSurahName(18),
+                    Spacer(),
+                    Text(
+                        quran.getSurahNameArabic(18),
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold)),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text("Ayah No: 18 ",
+                            fontSize: 26,
+                          color: Style.whiteColor
+                        ),),
+                    Spacer(),
+                    Text("The opening",
                         style: TextStyle(
+                          fontSize: 16,
                           color: Colors.white,
-                          fontSize: 14,
                         )),
+                    Spacer(),
+                    SizedBox(
+                      width: 250,
+                      child: Divider(
+                        height: 10,
+                        color:Style.whiteColor,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(" ${quran.getVerseCount(18)} : عدد الآيات ",
+                        style: TextStyle(
+                            fontSize: 14,
+                          color: Style.whiteColor,
+                        )),
+                    Spacer(),
+                    const Image(
+                        image: AssetImage("lib/core/assets/image/opening.png")),
+                    SizedBox(
+                      height: 80,
+                    ),
                   ],
                 ),
               ),
-            ),
-            Text(
-              quran.basmala,
-              style: Style.quranFont,
-              textAlign: TextAlign.center,
             ),
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: quran.getVerseCount(18),
-              itemBuilder: (context, index) => Container(
-                color: Colors.grey[300],
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  '${quran.getVerse(18, (index + 1), verseEndSymbol: true)}',
-                  style: Style.quranFont,
-                  textAlign: TextAlign.right,
-                ),
+              itemBuilder: (context, index) => ItemForeVerse(
+                index: index,
+                numOfSurah: 18,
               ),
             ),
           ],
