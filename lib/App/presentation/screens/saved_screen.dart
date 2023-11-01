@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'component/Card.dart';
 
 class SavedScreen extends StatelessWidget {
   const SavedScreen({super.key});

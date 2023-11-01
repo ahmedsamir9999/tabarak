@@ -5,8 +5,9 @@ import 'package:quran/quran.dart' as quran;
 import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/core/utils/Style.dart';
 
-import 'component/Card.dart';
-import 'component/item_for_verse.dart';
+
+import '../../../core/component/Card.dart';
+import '../../../core/component/item_for_verse.dart';
 import 'home.dart';
 
 class PageOfElmoshaf extends StatelessWidget {

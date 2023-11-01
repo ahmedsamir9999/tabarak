@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../controller/quran_provider.dart';
+import '../../App/presentation/controller/quran_provider.dart';
 
 class card extends StatelessWidget {
 
