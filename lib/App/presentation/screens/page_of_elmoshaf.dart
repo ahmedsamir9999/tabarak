@@ -1,19 +1,27 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
-import 'package:tabarak/App/presentation/screens/component/Card.dart';
+import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/core/utils/Style.dart';
 
+import 'component/Card.dart';
 import 'component/item_for_verse.dart';
 import 'home.dart';
 
 class PageOfElmoshaf extends StatelessWidget {
-  PageOfElmoshaf({required this.index, super.key});
-  int index;
+  int sura;
+
+  PageOfElmoshaf({
+    super.key,
+    required this.sura,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Style.mainColor.withOpacity(.6),
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).push(
@@ -26,7 +34,7 @@ class PageOfElmoshaf extends StatelessWidget {
         ),
         title: Center(
             child: Text(
-          quran.getSurahNameArabic(18),
+          quran.getSurahNameArabic(sura),
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -49,15 +57,17 @@ class PageOfElmoshaf extends StatelessWidget {
               height: 10,
             ),
             card(
-                nameSura: "${quran.getSurahNameArabic(18)}",
-                verses: " ${quran.getVerseCount(18)} : عدد الآيات "),
+                nameSura: "${quran.getSurahNameArabic(sura)}",
+                verses: " ${quran.getVerseCount(sura)} : عدد الآيات ",
+              sura: sura,
+            ),
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: quran.getVerseCount(18),
               itemBuilder: (context, index) => ItemForeVerse(
                 index: index,
-                numOfSurah: 18,
+                numOfSurah: sura,
               ),
             ),
           ],

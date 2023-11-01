@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../controller/quran_provider.dart';
 
 class card extends StatelessWidget {
-  card({required this.nameSura, required this.verses, super.key});
+
   String nameSura;
   String verses;
+  int sura ;
+
+  card({
+    required this.nameSura,
+    required this.verses,
+    required this.sura,
+    super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 350,
+    return ChangeNotifierProvider(
+        create: (context)=> QuranProvider(),
+    child: Container(
+      height: 320,
       width: 450,
       decoration: const BoxDecoration(
           image: DecorationImage(
@@ -22,11 +35,23 @@ class card extends StatelessWidget {
               color: Colors.white
             )),
             Spacer(),
-            const Text("The opening",style: TextStyle(
-              fontSize: 16,
-              color: Colors.white
-
-            )),
+            Consumer<QuranProvider>(
+              builder: (context,prov,child)
+              {
+                return IconButton(
+                  onPressed: ()
+                  {
+                    prov.playAudioSura(sura);
+                  } ,
+                  icon: Icon( prov.isPlay == true
+                      ?Icons.pause_circle
+                      :Icons.play_circle ,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                );
+              },
+            ),
             Spacer(),
             Divider(
               height: 7,
@@ -42,10 +67,10 @@ class card extends StatelessWidget {
             )),
             Spacer(),
             const Image(image: AssetImage("lib/core/assets/image/opening.png")),
-            SizedBox(height: 80,),
+            SizedBox(height: 65,),
           ],
         ),
-      ),
+      ),),
     );
   }
 }

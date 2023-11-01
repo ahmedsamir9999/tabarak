@@ -228,7 +228,7 @@ class QuranScreen extends StatelessWidget {
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      PageOfElmoshaf(index: index),
+                                      PageOfElmoshaf(sura: (index+1)),
                                 ));
                               },
                             ),

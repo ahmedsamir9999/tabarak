@@ -1,7 +1,10 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:quran/quran.dart';
+import 'package:quran/surah_data.dart';
+import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 
 import '../../../../core/utils/Style.dart';
 
@@ -19,13 +22,15 @@ class ItemForeVerse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return ChangeNotifierProvider(
+        create: (context)=> QuranProvider(),
+    child: Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 15,
       ),
       child: Container(
         // color: Colors.grey[100],
-        color: Colors.white,
+        color: Colors.grey[200],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -34,7 +39,7 @@ class ItemForeVerse extends StatelessWidget {
               height: 50,
               decoration: BoxDecoration(
                 // color: Colors.purple[100],
-                color: Colors.grey[200],
+                color: Colors.purple[100],
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               child: Row(
@@ -51,13 +56,20 @@ class ItemForeVerse extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(Icons.share),
                   ),
-                  IconButton(
-                    onPressed: ()async
+                  Consumer<QuranProvider>(
+                    builder: (context,prov,child)
                     {
-                      await player.play(UrlSource(quran.getAudioURLByVerse(numOfSurah, index+1)));
-                      print(quran.getAudioURLByVerse(numOfSurah, index+1));
+                      return IconButton(
+                        onPressed: ()
+                        {
+                          prov.playAudioVerse(index, numOfSurah);
+                        } ,
+                        icon: Icon( prov.iconCurrent == index
+                            ?Icons.pause
+                            :Icons.play_arrow
+                        ),
+                      );
                     },
-                    icon: Icon(Icons.play_arrow),
                   ),
                   IconButton(
                     onPressed: () {},
@@ -94,7 +106,7 @@ class ItemForeVerse extends StatelessWidget {
             SizedBox(height: 15,)
           ],
         ),
-      ),
+      ),),
     );
   }
 }

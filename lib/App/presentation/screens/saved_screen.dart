@@ -8,9 +8,9 @@ class SavedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Center(
-        child: card(nameSura: "AL-Fatiah",verses: "7"),
-      ),
+      // body: Center(
+      //   child: card(nameSura: "AL-Fatiah",verses: "7"),
+      // ),
     );
   }
 }
