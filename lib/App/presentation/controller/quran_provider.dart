@@ -6,8 +6,24 @@ import 'package:quran/quran.dart' as quran;
 class QuranProvider extends ChangeNotifier {
   bool isPlay = false;
   int iconCurrent = -1;
+  Duration currentPotion = Duration();
+  Duration musicLength = Duration() ;
+
 
   final player = AudioPlayer();
+
+  onPlay()
+  {
+    player.onPositionChanged.listen((value) {
+      currentPotion = value ;
+      notifyListeners();
+    });
+
+    player.onDurationChanged.listen((value) {
+      musicLength = value ;
+      notifyListeners();
+    });
+  }
 
   Future playAudioVerse(int index, int sura) async {
     iconCurrent = index;

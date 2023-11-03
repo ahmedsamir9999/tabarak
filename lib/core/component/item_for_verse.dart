@@ -100,9 +100,6 @@ class ItemForeVerse extends StatelessWidget {
                 textAlign: TextAlign.right,
               ),
             ),
-            Divider(color: Colors.grey[200],
-            thickness: 1.5,
-            ),
             SizedBox(height: 15,)
           ],
         ),

@@ -42,6 +42,53 @@ class card extends StatelessWidget {
                   onPressed: ()
                   {
                     prov.playAudioSura(sura);
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return
+                            AlertDialog(
+                              title: Center(child: Text('مشاري')),
+                              shape: CircleBorder(
+                                eccentricity: 1,
+                                side: BorderSide(strokeAlign: 10),
+                              ),
+                              content: SizedBox(
+                                height: 100,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          prov.currentPotion.inSeconds.toString(),
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        Slider(
+                                          value: 5,
+                                          min: 0,
+                                          max: 10,
+                                          onChanged: (value) {},
+                                        ),
+                                        Text(
+                                            prov.musicLength.inSeconds.toString(),
+                                          style:
+                                          TextStyle(fontSize: 12, color: Colors.blue),
+                                        ),
+                                      ],
+                                    ),
+                                    Icon(
+                                      Icons.pause_circle,
+                                      size: 45,
+                                      color: Colors.blue,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                        });
                   } ,
                   icon: Icon( prov.isPlay == true
                       ?Icons.pause_circle

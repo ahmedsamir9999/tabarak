@@ -65,7 +65,7 @@ class PageOfElmoshaf extends StatelessWidget {
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: quran.getVerseCount(18),
+              itemCount: quran.getVerseCount(sura),
               itemBuilder: (context, index) => ItemForeVerse(
                 index: index,
                 numOfSurah: sura,
