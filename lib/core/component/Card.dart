@@ -3,12 +3,12 @@ import 'package:provider/provider.dart';
 
 import '../../App/presentation/controller/quran_provider.dart';
 
-class card extends StatelessWidget {
+class Caard extends StatelessWidget {
   String nameSura;
   String verses;
   int sura;
 
-  card(
+  Caard(
       {required this.nameSura,
       required this.verses,
       required this.sura,

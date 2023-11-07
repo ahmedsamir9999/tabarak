@@ -57,7 +57,7 @@ class PageOfElmoshaf extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            card(
+            Caard(
                 nameSura: "${quran.getSurahNameArabic(sura)}",
                 verses: " ${quran.getVerseCount(sura)} : عدد الآيات ",
               sura: sura,
