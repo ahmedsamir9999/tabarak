@@ -47,7 +47,7 @@ class SplashView extends StatelessWidget {
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Home(),
+                        builder: (context) => const Home(),
                       )),
                   child: Container(
                     height: 60,

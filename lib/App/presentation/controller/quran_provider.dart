@@ -9,8 +9,7 @@ class QuranProvider extends ChangeNotifier {
   bool isPlay = false;
   int iconCurrent = -1;
   Duration currentPotion = Duration();
-  Duration musicLength = Duration() ;
-
+  Duration musicLength = Duration();
 
   final player = AudioPlayer();
 
@@ -22,54 +21,46 @@ class QuranProvider extends ChangeNotifier {
   //   );
   // }
 
-  String formatTime(int seconds)
-  {
+  String formatTime(int seconds) {
     return '${(Duration(seconds: seconds))}'.split('.')[0].padLeft(8, '0');
   }
 
-  onPlay()
-  {
+  onPlay() {
     player.onPositionChanged.listen((value) {
-      currentPotion = value ;
+      currentPotion = value;
       notifyListeners();
     });
 
     player.onDurationChanged.listen((value) {
-      musicLength = value ;
+      musicLength = value;
       notifyListeners();
     });
   }
 
-  Future playAudioVerse(int index, int sura) async
-  {
-   if(iconCurrent == index)
-   {
-     player.pause();
-     iconCurrent = -1 ;
-   }
-   else{
-     iconCurrent = index;
+  Future playAudioVerse(int index, int sura) async {
+    if (iconCurrent == index) {
+      player.pause();
+      iconCurrent = -1;
+    } else {
+      iconCurrent = index;
 
-     await player.play(
-       UrlSource(quran.getAudioURLByVerse(sura, index + 1)),
-     );
+      await player.play(
+        UrlSource(quran.getAudioURLByVerse(sura, index + 1)),
+      );
 
-     player.onPlayerComplete.listen((c) {
-       iconCurrent = -1;
-       notifyListeners();
-     });
-   }
+      player.onPlayerComplete.listen((c) {
+        iconCurrent = -1;
+        notifyListeners();
+      });
+    }
     notifyListeners();
   }
 
-  Future playAudioSura(int sura) async
-  {
-    if(isPlay == true)
-    {
+  Future playAudioSura(int sura) async {
+    if (isPlay == true) {
       player.pause();
       isPlay = false;
-    }else
-    {
+    } else {
       isPlay = true;
       await player.play(
         UrlSource(ApiConstance.quranUrl('050')),
@@ -82,19 +73,15 @@ class QuranProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  stopPlay()
-  {
+  stopPlay() {
     player.stop();
-    currentPotion = Duration.zero ;
-    isPlay = false ;
+    currentPotion = Duration.zero;
+    isPlay = false;
     notifyListeners();
   }
 
-  seekPlay(sec)
-  {
+  seekPlay(sec) {
     player.seek(Duration(seconds: sec));
     notifyListeners();
   }
-
-
 }

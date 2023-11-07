@@ -1,8 +1,5 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
-import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/core/utils/Style.dart';
 
 
@@ -26,7 +23,7 @@ class PageOfElmoshaf extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Home()));
+                MaterialPageRoute(builder: (context) => const Home()));
           },
           icon: const Icon(
             Icons.arrow_back,
@@ -36,7 +33,7 @@ class PageOfElmoshaf extends StatelessWidget {
         title: Center(
             child: Text(
           quran.getSurahNameArabic(sura),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
@@ -44,7 +41,7 @@ class PageOfElmoshaf extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               size: 35,
             ),
@@ -58,12 +55,12 @@ class PageOfElmoshaf extends StatelessWidget {
               height: 10,
             ),
             Caard(
-                nameSura: "${quran.getSurahNameArabic(sura)}",
+                nameSura: quran.getSurahNameArabic(sura),
                 verses: " ${quran.getVerseCount(sura)} : عدد الآيات ",
               sura: sura,
             ),
             ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: quran.getVerseCount(sura),
               itemBuilder: (context, index) => ItemForeVerse(
