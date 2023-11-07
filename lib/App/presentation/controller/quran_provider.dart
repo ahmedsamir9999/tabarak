@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quran/quran.dart' as quran;
 
+import '../../../core/network/api_constance.dart';
+
 class QuranProvider extends ChangeNotifier {
   bool isPlay = false;
   int iconCurrent = -1;
@@ -11,6 +13,19 @@ class QuranProvider extends ChangeNotifier {
 
 
   final player = AudioPlayer();
+
+  // Future onTest() async
+  // {
+  //   await player.play(
+  //     UrlSource(ApiConstance.quranUrl('001')),
+  //     // position: QuranProvider().currentPotion,
+  //   );
+  // }
+
+  String formatTime(int seconds)
+  {
+    return '${(Duration(seconds: seconds))}'.split('.')[0].padLeft(8, '0');
+  }
 
   onPlay()
   {
@@ -25,31 +40,59 @@ class QuranProvider extends ChangeNotifier {
     });
   }
 
-  Future playAudioVerse(int index, int sura) async {
-    iconCurrent = index;
+  Future playAudioVerse(int index, int sura) async
+  {
+   if(iconCurrent == index)
+   {
+     player.pause();
+     iconCurrent = -1 ;
+   }
+   else{
+     iconCurrent = index;
 
-    await player.play(
-      UrlSource(quran.getAudioURLByVerse(sura, index + 1)),
-    );
+     await player.play(
+       UrlSource(quran.getAudioURLByVerse(sura, index + 1)),
+     );
 
-    player.onPlayerComplete.listen((c) {
-      iconCurrent = -1;
-      notifyListeners();
-    });
-
+     player.onPlayerComplete.listen((c) {
+       iconCurrent = -1;
+       notifyListeners();
+     });
+   }
     notifyListeners();
   }
 
-  Future playAudioSura(int sura) async {
-    isPlay = true;
-    await player.play(
-      UrlSource(quran.getAudioURLByVerse(1, 1)),
-    );
-    player.onPlayerComplete.listen((c) {
+  Future playAudioSura(int sura) async
+  {
+    if(isPlay == true)
+    {
+      player.pause();
       isPlay = false;
-      notifyListeners();
-    });
-    // isPlay = false;
+    }else
+    {
+      isPlay = true;
+      await player.play(
+        UrlSource(ApiConstance.quranUrl('050')),
+      );
+      player.onPlayerComplete.listen((c) {
+        isPlay = false;
+        notifyListeners();
+      });
+    }
+    notifyListeners();
+  }
+
+  stopPlay()
+  {
+    player.stop();
+    currentPotion = Duration.zero ;
+    isPlay = false ;
+    notifyListeners();
+  }
+
+  seekPlay(sec)
+  {
+    player.seek(Duration(seconds: sec));
     notifyListeners();
   }
 

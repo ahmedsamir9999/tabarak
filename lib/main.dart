@@ -5,7 +5,6 @@ import 'App/presentation/screens/Splash_view.dart';
 import 'App/presentation/screens/home.dart';
 import 'App/presentation/screens/page_of_elmoshaf.dart';
 import 'App/presentation/screens/quran_screen.dart';
-import 'core/component/item_player.dart';
 
 
 void main() {
@@ -21,10 +20,10 @@ class MyApp extends StatelessWidget {
 
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: Home(),
-       //home: PageOfElmoshaf(sura: 1),
+      // home: Home(),
+       home: PageOfElmoshaf(sura: 1),
       //home: ItemForeVerse(index: 0,numOfSurah: 18),
-       home: ItemPlayer(),
+
     );
   }
 }

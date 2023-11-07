@@ -11,4 +11,5 @@ class Style {
           color: Colors.black,
           fontWeight: FontWeight.bold,
       );
+
 }
