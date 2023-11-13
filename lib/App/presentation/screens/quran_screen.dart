@@ -8,7 +8,7 @@ import '../../../core/utils/style.dart';
 import '../controller/home_provider.dart';
 
 class QuranScreen extends StatelessWidget {
-  QuranScreen({super.key});
+  const QuranScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -35,7 +35,9 @@ class QuranScreen extends StatelessWidget {
                             color: Color(0xff672CBC))),
                     const Spacer(),
                     InkWell(
-                        // onTap: () => ,
+                        onTap: () {
+
+                        },
                         child: Image.asset("lib/core/assets/image/search.png")),
                   ],
                 ),
@@ -47,7 +49,7 @@ class QuranScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Text("Tanvir Ahassan", style: Style.quranFont
+                const Text("Tanvir Ahassan", style: Style.quranFont
                     //color: Colors.black,
                     //fontSize: ,
                     //fontWeight: FontWeight.bold
@@ -67,7 +69,7 @@ class QuranScreen extends StatelessWidget {
                             AssetImage("lib/core/assets/image/Frame 30.png")),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -85,15 +87,15 @@ class QuranScreen extends StatelessWidget {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text("Al-Fatiah",
+                        const Text("Al-Fatiah",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold)),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Ayah No:1",
+                        const Text("Ayah No:1",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
@@ -239,11 +241,11 @@ class QuranScreen extends StatelessWidget {
                                 const SizedBox(
                               height: 10,
                             ),
-                            itemBuilder: (context, index) => Container(
+                            itemBuilder: (context, index) => SizedBox(
                               height: 100,
                               width: 100,
                               child: Text(
-                                  '${quran.getSurahNameArabic(index + 1)}',
+                                  quran.getSurahNameArabic(index + 1),
                                   style: TextStyle(
                                       fontSize:
                                           Responsive.fontSize(context, 2))),
@@ -255,7 +257,7 @@ class QuranScreen extends StatelessWidget {
                                 const SizedBox(
                               height: 10,
                             ),
-                            itemBuilder: (context, index) => Container(
+                            itemBuilder: (context, index) => SizedBox(
                               height: 100,
                               width: 100,
                               child: Text('${quran.getPageData(index + 1)}',
@@ -275,7 +277,7 @@ class QuranScreen extends StatelessWidget {
                                 )
                               ],
                             ),
-                            itemBuilder: (context, index) => Container(
+                            itemBuilder: (context, index) => SizedBox(
                               height: 60,
                               width: 100,
                               child: Row(
