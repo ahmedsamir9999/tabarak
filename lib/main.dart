@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: Home(),
-       home: PageOfElmoshaf(sura: 1),
+       home: PageOfElmoshaf(sura: 30),
       //home: ItemForeVerse(index: 0,numOfSurah: 18),
 
     );

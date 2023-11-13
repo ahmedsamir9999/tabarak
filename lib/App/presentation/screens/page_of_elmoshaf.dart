@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/core/utils/Style.dart';
 
@@ -17,6 +18,8 @@ class PageOfElmoshaf extends StatelessWidget {
     super.key,
     required this.sura,
   });
+
+  ItemScrollController _scrollController = ItemScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,10 @@ class PageOfElmoshaf extends StatelessWidget {
         )),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: ()
+            {
+              _scrollController.scrollTo(index: 20-1, duration: Duration(seconds: 5));
+            },
             icon: Icon(
               Icons.search,
               size: 35,
@@ -51,28 +57,27 @@ class PageOfElmoshaf extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Caard(
-                nameSura: "${quran.getSurahNameArabic(sura)}",
-                verses: " ${quran.getVerseCount(sura)} : عدد الآيات ",
-              sura: sura,
-            ),
-            ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          Caard(
+              nameSura: "${quran.getSurahNameArabic(sura)}",
+              verses: " ${quran.getVerseCount(sura)} : عدد الآيات ",
+            sura: sura,
+          ),
+          Expanded(
+            child: ScrollablePositionedList.builder(
+              itemScrollController:_scrollController ,
               itemCount: quran.getVerseCount(sura),
               itemBuilder: (context, index) => ItemForeVerse(
                 index: index,
                 numOfSurah: sura,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
