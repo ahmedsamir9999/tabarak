@@ -19,8 +19,8 @@ class Caard extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => QuranProvider(),
       child: Container(
-        height: 320,
-        width: 450,
+        height: 310,
+        width: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("lib/core/assets/image/Card.png"))),
@@ -77,7 +77,7 @@ class Caard extends StatelessWidget {
                                     : Icons.pause_circle,
                                 color: Colors.white),
                             onPressed: () async {
-                              prov.playAudioSura(1);
+                              prov.playAudioSura(sura);
                               prov.onPlay();
                             },
                           ),
