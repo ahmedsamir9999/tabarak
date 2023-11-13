@@ -32,6 +32,7 @@ class HomeProvider extends ChangeNotifier {
     print(suraList);
     notifyListeners();
   }
+
   String ttt="z";
   test(value){
     if(value.isNotEmpty)
