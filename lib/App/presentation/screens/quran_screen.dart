@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:tabarak/App/presentation/screens/page_of_elmoshaf.dart';
 
+import '../../../core/component/Search.dart';
 import '../../../core/utils/responsive.dart';
 import '../../../core/utils/style.dart';
 import '../controller/home_provider.dart';
@@ -23,7 +24,9 @@ class QuranScreen extends StatelessWidget {
                 Row(
                   children: [
                     InkWell(
-                        // onTap: () => ,
+                        onTap: () {
+
+                        },
                         child: Image.asset("lib/core/assets/image/menu.png")),
                     const SizedBox(
                       width: 20,
@@ -36,7 +39,14 @@ class QuranScreen extends StatelessWidget {
                     const Spacer(),
                     InkWell(
                         onTap: () {
+                          HomeProvider().saveList();
+                          showBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Search();
 
+                            },
+                          );
                         },
                         child: Image.asset("lib/core/assets/image/search.png")),
                   ],
@@ -219,18 +229,17 @@ class QuranScreen extends StatelessWidget {
                                       ],
                                     ),
                                     const Spacer(),
-                                    Text(
-                                        quran.getSurahNameArabic(index + 1),
+                                    Text(quran.getSurahNameArabic(index + 1),
                                         style: TextStyle(
-                                            fontSize:
-                                            Responsive.fontSize(context, 2))),
+                                            fontSize: Responsive.fontSize(
+                                                context, 2))),
                                   ],
                                 ),
                               ),
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      PageOfElmoshaf(sura: (index+1)),
+                                      PageOfElmoshaf(sura: (index + 1)),
                                 ));
                               },
                             ),
@@ -244,8 +253,7 @@ class QuranScreen extends StatelessWidget {
                             itemBuilder: (context, index) => SizedBox(
                               height: 100,
                               width: 100,
-                              child: Text(
-                                  quran.getSurahNameArabic(index + 1),
+                              child: Text(quran.getSurahNameArabic(index + 1),
                                   style: TextStyle(
                                       fontSize:
                                           Responsive.fontSize(context, 2))),
