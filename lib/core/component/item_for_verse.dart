@@ -8,6 +8,7 @@ import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/App/presentation/screens/saved_screen.dart';
 
 import '../../../../core/utils/Style.dart';
+import '../shared preferences/shared.dart';
 
 class ItemForeVerse extends StatelessWidget {
   int index;
@@ -75,9 +76,9 @@ class ItemForeVerse extends StatelessWidget {
                           onPressed: ()
                           {
                             prov.toSave(index ,numOfSurah);
-                            print('>>>>>>>>>>>>>>>>${prov.saveCurrent}');
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => SavedScreen()));
+                            MyCache.setInt(key: MyChachKey.saveCurrent, value: prov.saveCurrent) ;
+                            MyCache.setInt(key: MyChachKey.indexOfAyah, value: (index)) ;
+                            MyCache.setInt(key: MyChachKey.indexOfSura, value: numOfSurah) ;
                           },
                           icon: Icon(prov.saveCurrent == index
                               ? Icons.bookmark

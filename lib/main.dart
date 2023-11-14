@@ -5,10 +5,13 @@ import 'App/presentation/screens/Splash_view.dart';
 import 'App/presentation/screens/home.dart';
 import 'App/presentation/screens/page_of_elmoshaf.dart';
 import 'App/presentation/screens/quran_screen.dart';
+import 'core/shared preferences/shared.dart';
 
 
-void main() {
+void main() async{
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await MyCache.init();
 }
 
 class MyApp extends StatelessWidget {

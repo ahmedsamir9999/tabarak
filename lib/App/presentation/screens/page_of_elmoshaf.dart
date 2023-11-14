@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,16 +15,23 @@ import 'home.dart';
 
 class PageOfElmoshaf extends StatelessWidget {
   int sura;
+  int location ;
 
   PageOfElmoshaf({
     super.key,
     required this.sura,
+     this.location=0,
   });
 
-  ItemScrollController _scrollController = ItemScrollController();
+  final ItemScrollController scrollController = ItemScrollController();
+
 
   @override
   Widget build(BuildContext context) {
+    Timer(Duration(microseconds: 1),
+            () {
+              scrollController.scrollTo(index: location, duration: Duration(seconds: 2));
+            });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Style.mainColor.withOpacity(.6),
@@ -48,7 +57,7 @@ class PageOfElmoshaf extends StatelessWidget {
           IconButton(
             onPressed: ()
             {
-              _scrollController.scrollTo(index: 20-1, duration: Duration(seconds: 5));
+              scrollController.scrollTo(index: 20-1, duration: Duration(seconds: 5));
             },
             icon: Icon(
               Icons.search,
@@ -69,7 +78,7 @@ class PageOfElmoshaf extends StatelessWidget {
           ),
           Expanded(
             child: ScrollablePositionedList.builder(
-              itemScrollController:_scrollController ,
+              itemScrollController:scrollController,
               itemCount: quran.getVerseCount(sura),
               itemBuilder: (context, index) => ItemForeVerse(
                 index: index,

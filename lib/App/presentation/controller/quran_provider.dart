@@ -8,6 +8,7 @@ import 'package:tabarak/core/component/item_for_verse.dart';
 import '../../../core/network/api_constance.dart';
 
 class QuranProvider extends ChangeNotifier {
+
   bool isPlay = false;
   int audioCurrent = -1;
   int saveCurrent = -1;
@@ -50,23 +51,20 @@ class QuranProvider extends ChangeNotifier {
     });
   }
 
+  save(int s)
+  {
+
+  }
+
   toSave(int index , int numOfSurah)
   {
     if(saveCurrent == index )
     {
-      saveIndex = -1;
-      saveSura = -1;
       saveCurrent = -1 ;
-      print('>>>>>>>>>>>>>>>>1<<<<<<<<<<<<<<<<<<<$saveCurrent');
     }
     else{
       saveCurrent = index ;
-      saveIndex = index;
-      saveSura = numOfSurah;
-      print('>>>>>>>>>>>>>>>>2<<<<<<<<<<<<<<<<<<<$saveCurrent');
-      notifyListeners();
     }
-
     notifyListeners();
   }
 

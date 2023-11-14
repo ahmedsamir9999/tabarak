@@ -19,35 +19,29 @@ class MyCache {
   static void setInt({required MyChachKey key, required int value}) {
     preferences?.setInt(key.name, value);
   }
-  static int GetInt({required MyChachKey key}) {
-    return preferences?.getInt(key.name) ?? 0;
+  static int getInt({required MyChachKey key}) {
+    return preferences?.getInt(key.name) ?? -1;
   }
 
 
-  static void SetBool({required MyChachKey key, required bool value}) {
+  static void setBool({required MyChachKey key, required bool value}) {
     preferences?.setBool(key.name, value);
   }
-  static bool? GetBool({required MyChachKey key}) {
+  static bool? getBool({required MyChachKey key}) {
     return preferences?.getBool(key.name)?? false;
   }
 
 
-  static void SetDouble({required MyChachKey key, required double value}) {
+  static void setDouble({required MyChachKey key, required double value}) {
     preferences?.setDouble(key.name, value);
   }
-  static double? GetDouble({required MyChachKey key}) {
+  static double? getDouble({required MyChachKey key}) {
     return preferences?.getDouble(key.name)?? 0.0;
   }
 
 }
 enum MyChachKey{
-
-  email,
-  password,
-  name,
-  checked,
-  onBoarding,
-  token,
-  userId,
-  faveList
+  saveCurrent,
+  indexOfAyah,
+  indexOfSura
 }
