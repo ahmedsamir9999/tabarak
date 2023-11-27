@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tabarak/App/presentation/controller/home_provider.dart';
-import 'package:quran/quran.dart' as quran;
 class Search extends StatelessWidget {
-   Search({super.key});
+   const Search({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class Search extends StatelessWidget {
 
                     print(pro.suraList);
                   },
-                      child: Text("Button"))
+                      child: const Text("Button"))
                 ],
               ),
             ),

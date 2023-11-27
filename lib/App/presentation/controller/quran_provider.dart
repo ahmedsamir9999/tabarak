@@ -2,7 +2,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quran/quran.dart' as quran;
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:tabarak/core/component/item_for_verse.dart';
 
 import '../../../core/network/api_constance.dart';
@@ -14,24 +13,12 @@ class QuranProvider extends ChangeNotifier {
   int saveCurrent = -1;
   int saveIndex = -1;
   int saveSura = -1;
-  Duration currentPotion = Duration();
-  Duration musicLength = Duration() ;
-  List<ItemForeVerse> savedList =
-  [
-    ItemForeVerse(index: 0, numOfSurah: 1),
-  ];
+  Duration currentPotion = const Duration();
+  Duration musicLength = const Duration() ;
 
 
   final player = AudioPlayer();
 
-
-  // Future onTest() async
-  // {
-  //   await player.play(
-  //     UrlSource(ApiConstance.quranUrl('001')),
-  //     // position: QuranProvider().currentPotion,
-  //   );
-  // }
 
   String formatTime(int seconds)
   {
@@ -51,12 +38,7 @@ class QuranProvider extends ChangeNotifier {
     });
   }
 
-  save(int s)
-  {
-
-  }
-
-  toSave(int index , int numOfSurah)
+  toSave(int index)
   {
     if(saveCurrent == index )
     {

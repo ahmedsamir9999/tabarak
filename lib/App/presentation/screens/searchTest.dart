@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +42,7 @@ class testSearch extends StatelessWidget {
 
                       print(pro.suraList);
                     },
-                        child: Text("Button"))
+                        child: const Text("Button"))
                   ],
                 ),
               ),

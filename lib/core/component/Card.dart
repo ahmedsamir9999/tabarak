@@ -29,7 +29,7 @@ class Caard extends StatelessWidget {
           child: Column(
             children: [
               Text(nameSura,
-                  style: TextStyle(fontSize: 26, color: Colors.white)),
+                  style: const TextStyle(fontSize: 26, color: Colors.white)),
               Consumer<QuranProvider>(
                 builder: (context, prov, child) {
                   return Column(
@@ -40,7 +40,7 @@ class Caard extends StatelessWidget {
                         children: [
                           Text(
                             prov.formatTime(prov.currentPotion.inSeconds),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                           Slider(
                             value: prov.currentPotion.inSeconds.toDouble(),
@@ -56,7 +56,7 @@ class Caard extends StatelessWidget {
                           ),
                           Text(
                               prov.formatTime(prov.musicLength.inSeconds-prov.currentPotion.inSeconds),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
 
                           // Text(
@@ -82,7 +82,7 @@ class Caard extends StatelessWidget {
                             },
                           ),
                           IconButton(
-                            icon: Icon(Icons.stop, color: Colors.white),
+                            icon: const Icon(Icons.stop, color: Colors.white),
                             onPressed: () {
                               prov.stopPlay();
                             },
@@ -93,19 +93,19 @@ class Caard extends StatelessWidget {
                   );
                 },
               ),
-              Divider(
+              const Divider(
                 height: 7,
                 color: Colors.white,
                 indent: 70,
                 endIndent: 70,
               ),
-              Spacer(),
+              const Spacer(),
               Text(" $verses ",
-                  style: TextStyle(fontSize: 14, color: Colors.white)),
-              Spacer(),
+                  style: const TextStyle(fontSize: 14, color: Colors.white)),
+              const Spacer(),
               const Image(
                   image: AssetImage("lib/core/assets/image/opening.png")),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
             ],

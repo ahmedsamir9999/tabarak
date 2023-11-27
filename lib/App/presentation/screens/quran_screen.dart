@@ -43,7 +43,7 @@ class QuranScreen extends StatelessWidget {
                           showBottomSheet(
                             context: context,
                             builder: (context) {
-                              return Search();
+                              return const Search();
 
                             },
                           );

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tabarak/core/utils/responsive.dart';
 
-import 'App/presentation/screens/Splash_view.dart';
 import 'App/presentation/screens/home.dart';
 import 'App/presentation/screens/page_of_elmoshaf.dart';
-import 'App/presentation/screens/quran_screen.dart';
+import 'core/shared preferences/shared.dart';
 
 
-void main() {
+void main() async {
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await MyCache.init();
 }
 
 class MyApp extends StatelessWidget {
@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
 
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: Home(),
-       home: PageOfElmoshaf(sura: 30),
+       home: Home(),
+      //  home: PageOfElmoshaf(sura: 30),
       //home: ItemForeVerse(index: 0,numOfSurah: 18),
 
     );

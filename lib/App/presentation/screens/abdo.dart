@@ -142,7 +142,7 @@ class Quran extends StatelessWidget {
                         )),
                   ],
                 ),
-                Divider(
+                const Divider(
                   color: Colors.black,
                 ),
                 SizedBox(

@@ -1,11 +1,8 @@
 import 'dart:async';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/core/utils/Style.dart';
 
 
@@ -24,13 +21,12 @@ class PageOfElmoshaf extends StatelessWidget {
   });
 
   final ItemScrollController scrollController = ItemScrollController();
-
-
+  ScrollController controller = ScrollController() ;
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(microseconds: 1),
+    Timer(const Duration(microseconds: 1),
             () {
-              scrollController.scrollTo(index: location, duration: Duration(seconds: 2));
+              scrollController.scrollTo(index: location, duration: const Duration(seconds: 2));
             });
     return Scaffold(
       appBar: AppBar(
@@ -38,30 +34,33 @@ class PageOfElmoshaf extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Home()));
+                MaterialPageRoute(builder: (context) => const Home()));
           },
           icon: const Icon(
             Icons.arrow_back,
             size: 35,
+            color: Colors.white,
           ),
         ),
         title: Center(
             child: Text(
           quran.getSurahNameArabic(sura),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
+            color: Colors.white
           ),
         )),
         actions: [
           IconButton(
             onPressed: ()
             {
-              scrollController.scrollTo(index: 20-1, duration: Duration(seconds: 5));
+
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               size: 35,
+              color: Colors.white,
             ),
           ),
         ],
@@ -72,22 +71,38 @@ class PageOfElmoshaf extends StatelessWidget {
             height: 10,
           ),
           Caard(
-              nameSura: "${quran.getSurahNameArabic(sura)}",
+              nameSura: quran.getSurahNameArabic(sura),
               verses: " ${quran.getVerseCount(sura)} : عدد الآيات ",
             sura: sura,
           ),
           Expanded(
-            child: ScrollablePositionedList.builder(
-              itemScrollController:scrollController,
-              itemCount: quran.getVerseCount(sura),
-              itemBuilder: (context, index) => ItemForeVerse(
-                index: index,
-                numOfSurah: sura,
+            child: ScrollConfiguration(
+              behavior:_ScrollbarBehavior() ,
+              child: ScrollablePositionedList.builder(
+                itemScrollController:scrollController,
+                itemCount: quran.getVerseCount(sura),
+                itemBuilder: (context, index) => ItemForeVerse(
+                  index: index,
+                  numOfSurah: sura,
+                ),
               ),
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class _ScrollbarBehavior extends ScrollBehavior {
+  @override
+  Widget buildScrollbar(BuildContext context, Widget child, ScrollableDetails details) {
+    return Scrollbar(
+        controller: details.controller,
+        interactive: true,
+        thumbVisibility: true,
+        thickness: 10,
+        radius: Radius.circular(30),
+        child: child);
   }
 }

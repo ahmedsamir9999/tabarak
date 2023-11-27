@@ -9,9 +9,9 @@ class HomeProvider extends ChangeNotifier {
   final pageController = PageController();
 
   List<Widget> screens = [
-    QuranScreen(),
-    AzanScreen(),
-    SavedScreen(),
+    const QuranScreen(),
+    const AzanScreen(),
+    const SavedScreen(),
   ];
 
   changeIndex(index) {

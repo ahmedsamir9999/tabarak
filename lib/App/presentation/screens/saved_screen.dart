@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:quran/quran.dart';
 import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/App/presentation/screens/page_of_elmoshaf.dart';
-import 'package:tabarak/core/component/item_for_verse.dart';
 import 'package:tabarak/core/utils/Style.dart';
 import 'package:quran/quran.dart' as quran;
 
@@ -22,7 +21,11 @@ class SavedScreen extends StatelessWidget {
             title: const Center(
               child: Text(
                 'Saved',
-                style: Style.quranFont,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

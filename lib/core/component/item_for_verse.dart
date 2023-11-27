@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:quran/quran.dart';
-import 'package:quran/surah_data.dart';
 import 'package:tabarak/App/presentation/controller/quran_provider.dart';
-import 'package:tabarak/App/presentation/screens/saved_screen.dart';
 
 import '../../../../core/utils/Style.dart';
 import '../shared preferences/shared.dart';
@@ -42,21 +40,21 @@ class ItemForeVerse extends StatelessWidget {
                 decoration: BoxDecoration(
                   // color: Colors.purple[100],
                   color: Colors.purple[100],
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
                 child: Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Text(
-                      '${quran.getVerseEndSymbol(index + 1)}',
-                      style: TextStyle(fontSize: 27),
+                      quran.getVerseEndSymbol(index + 1),
+                      style: const TextStyle(fontSize: 27),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.share),
+                      icon: const Icon(Icons.share),
                     ),
                     Consumer<QuranProvider>(
                       builder: (context, prov, child) {
@@ -75,7 +73,7 @@ class ItemForeVerse extends StatelessWidget {
                         return IconButton(
                           onPressed: ()
                           {
-                            prov.toSave(index ,numOfSurah);
+                            prov.toSave(index);
                             MyCache.setInt(key: MyChachKey.saveCurrent, value: prov.saveCurrent) ;
                             MyCache.setInt(key: MyChachKey.indexOfAyah, value: (index)) ;
                             MyCache.setInt(key: MyChachKey.indexOfSura, value: numOfSurah) ;
@@ -95,7 +93,7 @@ class ItemForeVerse extends StatelessWidget {
                   vertical: 20,
                 ),
                 child: Text(
-                  '${quran.getVerse(numOfSurah, (index + 1))}',
+                  quran.getVerse(numOfSurah, (index + 1)),
                   style: Style.quranFont,
                   textAlign: TextAlign.right,
                 ),
@@ -106,12 +104,12 @@ class ItemForeVerse extends StatelessWidget {
                   vertical: 20,
                 ),
                 child: Text(
-                  '${quran.getVerseTranslation(numOfSurah, (index + 1), translation: Translation.enSaheeh)}',
+                  quran.getVerseTranslation(numOfSurah, (index + 1), translation: Translation.enSaheeh),
                   style: Style.quranFont,
                   textAlign: TextAlign.right,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               )
             ],
