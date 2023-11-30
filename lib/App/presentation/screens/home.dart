@@ -31,12 +31,15 @@ class Home extends StatelessWidget {
               },
               items: const [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_book), label: 'Business'),
+                  icon: Icon(Icons.menu_book), label: 'القرآن الكريم'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.notifications_active_rounded), label: 'Sports'),
+                  icon:
+                  ImageIcon(AssetImage('lib/core/assets/image/azan.png'),),
+                  label: 'مواقيت الصلاة'
+              ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.bookmark),
-                  label: 'Health'),
+                  label: 'حفظ'),
               ],
             );
           },

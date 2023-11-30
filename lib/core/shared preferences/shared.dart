@@ -36,12 +36,14 @@ class MyCache {
     preferences?.setDouble(key.name, value);
   }
   static double? getDouble({required MyChachKey key}) {
-    return preferences?.getDouble(key.name)?? 0.0;
+    return preferences?.getDouble(key.name)?? -1.0;
   }
 
 }
 enum MyChachKey{
   saveCurrent,
   indexOfAyah,
-  indexOfSura
+  indexOfSura,
+  lat,
+  lot
 }

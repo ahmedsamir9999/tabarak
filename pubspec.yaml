@@ -45,6 +45,9 @@ dependencies:
   shared_preferences: ^2.2.2
   connectivity_plus: ^5.0.2
   geolocator: ^10.1.0
+  get: ^4.6.6
+  adhan: ^2.0.0+1
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
