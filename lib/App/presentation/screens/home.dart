@@ -21,10 +21,11 @@ class Home extends StatelessWidget {
           {
             return BottomNavigationBar(
               iconSize: 30,
-              selectedItemColor: Colors.purple,
+              selectedItemColor: Colors.white,
               showUnselectedLabels: false,
               type: BottomNavigationBarType.fixed,
               currentIndex: prov.currentIndex,
+              backgroundColor: Color(0xff672CBC).withOpacity(.6),
               onTap: (index)
               {
                 prov.changeIndex(index);
