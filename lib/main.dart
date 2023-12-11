@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'App/presentation/controller/home_provider.dart';
+import 'App/presentation/controller/quran_provider.dart';
 import 'App/presentation/screens/home.dart';
 import 'App/presentation/screens/page_of_elmoshaf.dart';
 import 'core/shared preferences/shared.dart';
@@ -18,12 +21,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-       home: Home(),
-      //  home: PageOfElmoshaf(sura: 30),
-      //home: ItemForeVerse(index: 0,numOfSurah: 18),
+    return  MultiProvider(
+        providers:[
+          ChangeNotifierProvider(create: (context)=> HomeProvider(),),
+          ChangeNotifierProvider(create: (context)=> QuranProvider(),),
+        ] ,
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Home(),
+        //  home: PageOfElmoshaf(sura: 30),
+        //home: ItemForeVerse(index: 0,numOfSurah: 18),
 
+      ),
     );
   }
 }

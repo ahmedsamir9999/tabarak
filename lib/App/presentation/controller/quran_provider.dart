@@ -2,7 +2,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quran/quran.dart' as quran;
-import 'package:tabarak/core/component/item_for_verse.dart';
 
 import '../../../core/network/api_constance.dart';
 
@@ -11,10 +10,9 @@ class QuranProvider extends ChangeNotifier {
   bool isPlay = false;
   int audioCurrent = -1;
   int saveCurrent = -1;
-  int saveIndex = -1;
-  int saveSura = -1;
   Duration currentPotion = const Duration();
   Duration musicLength = const Duration() ;
+
 
 
   final player = AudioPlayer();
@@ -105,6 +103,8 @@ class QuranProvider extends ChangeNotifier {
     player.seek(Duration(seconds: sec));
     notifyListeners();
   }
+
+
 
   threeDigit(int y)
   {

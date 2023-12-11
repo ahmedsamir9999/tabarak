@@ -22,98 +22,95 @@ class ItemForeVerse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => QuranProvider(),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-        ),
-        child: Container(
-          // color: Colors.grey[100],
-          color: Colors.grey[200],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                  // color: Colors.purple[100],
-                  color: Colors.purple[100],
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      quran.getVerseEndSymbol(index + 1),
-                      style: const TextStyle(fontSize: 27),
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.share),
-                    ),
-                    Consumer<QuranProvider>(
-                      builder: (context, prov, child) {
-                        return IconButton(
-                          onPressed: () {
-                            prov.playAudioVerse(index, numOfSurah);
-                          },
-                          icon: Icon(prov.audioCurrent == index
-                              ? Icons.pause
-                              : Icons.play_arrow),
-                        );
-                      },
-                    ),
-                    Consumer<QuranProvider>(
-                      builder: (context, prov, child) {
-                        return IconButton(
-                          onPressed: ()
-                          {
-                            prov.toSave(index);
-                            MyCache.setInt(key: MyChachKey.saveCurrent, value: prov.saveCurrent) ;
-                            MyCache.setInt(key: MyChachKey.indexOfAyah, value: (index)) ;
-                            MyCache.setInt(key: MyChachKey.indexOfSura, value: numOfSurah) ;
-                          },
-                          icon: Icon(prov.saveCurrent == index
-                              ? Icons.bookmark
-                              : Icons.bookmark_border),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 15,
+      ),
+      child: Container(
+        // color: Colors.grey[100],
+        color: Colors.grey[200],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                // color: Colors.purple[100],
+                color: Colors.purple[100],
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 6,
-                  vertical: 20,
-                ),
-                child: Text(
-                  quran.getVerse(numOfSurah, (index + 1)),
-                  style: Style.quranFont,
-                  textAlign: TextAlign.right,
-                ),
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    quran.getVerseEndSymbol(index + 1),
+                    style: const TextStyle(fontSize: 27),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.share),
+                  ),
+                  Consumer<QuranProvider>(
+                    builder: (context, prov, child) {
+                      return IconButton(
+                        onPressed: () {
+                          prov.playAudioVerse(index, numOfSurah);
+                        },
+                        icon: Icon(prov.audioCurrent == index
+                            ? Icons.pause
+                            : Icons.play_arrow),
+                      );
+                    },
+                  ),
+                  Consumer<QuranProvider>(
+                    builder: (context, prov, child) {
+                      return IconButton(
+                        onPressed: ()
+                        {
+                          prov.toSave(index);
+                          MyCache.setInt(key: MyChachKey.saveCurrent, value: prov.saveCurrent) ;
+                          MyCache.setInt(key: MyChachKey.indexOfAyah, value: (index)) ;
+                          MyCache.setInt(key: MyChachKey.indexOfSura, value: numOfSurah) ;
+                        },
+                        icon: Icon(prov.saveCurrent == index
+                            ? Icons.bookmark
+                            : Icons.bookmark_border),
+                      );
+                    },
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 6,
-                  vertical: 20,
-                ),
-                child: Text(
-                  quran.getVerseTranslation(numOfSurah, (index + 1), translation: Translation.enSaheeh),
-                  style: Style.quranFont,
-                  textAlign: TextAlign.right,
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 6,
+                vertical: 20,
               ),
-              const SizedBox(
-                height: 15,
-              )
-            ],
-          ),
+              child: Text(
+                quran.getVerse(numOfSurah, (index + 1)),
+                style: Style.quranFont,
+                textAlign: TextAlign.right,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 6,
+                vertical: 20,
+              ),
+              child: Text(
+                quran.getVerseTranslation(numOfSurah, (index + 1), translation: Translation.enSaheeh),
+                style: Style.quranFont,
+                textAlign: TextAlign.right,
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            )
+          ],
         ),
       ),
     );

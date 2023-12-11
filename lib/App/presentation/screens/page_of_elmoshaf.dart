@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/core/utils/Style.dart';
 
 
@@ -33,8 +35,10 @@ class PageOfElmoshaf extends StatelessWidget {
         backgroundColor: Style.mainColor.withOpacity(.6),
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Home()));
+            // Navigator.of(context).popUntil((route) => route.isFirst);
+            Navigator.pop(context,
+                MaterialPageRoute(builder: (context) => QuranProvider().onPlay())
+            );
           },
           icon: const Icon(
             Icons.arrow_back,
@@ -106,3 +110,4 @@ class _ScrollbarBehavior extends ScrollBehavior {
         child: child);
   }
 }
+
