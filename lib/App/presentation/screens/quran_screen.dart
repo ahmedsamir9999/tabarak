@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
-import 'package:tabarak/App/presentation/controller/quran_provider.dart';
 import 'package:tabarak/App/presentation/screens/elsbha_screen.dart';
 import 'package:tabarak/App/presentation/screens/page_of_elmoshaf.dart';
 

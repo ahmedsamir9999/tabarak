@@ -66,7 +66,43 @@ class AzanScreen extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Spacer(flex: 6),
+                            const Spacer(flex: 3),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 360),
+                              child: TextButton(
+                                  onPressed: () async {
+                                    await prov.refreshLocation(context);
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(12),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        color: Colors.brown.withOpacity(.5),
+                                        backgroundBlendMode: BlendMode.darken),
+                                    child: const Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Icon(
+                                          Icons.share_location,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text(
+                                          'تحديد المكان',
+                                          style: TextStyle(
+                                            color: Style.whiteColor,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )),
+                            ),
+                            const Spacer(flex: 3),
                             Container(
                                 padding: const EdgeInsets.all(12),
                                 decoration: BoxDecoration(
@@ -75,6 +111,7 @@ class AzanScreen extends StatelessWidget {
                                     backgroundBlendMode: BlendMode.darken),
                                 child: const Text(
                                   ' رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ ',
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Style.whiteColor,
                                     fontSize: 20,

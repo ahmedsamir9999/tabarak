@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'App/presentation/controller/home_provider.dart';
 import 'App/presentation/controller/quran_provider.dart';
 import 'App/presentation/screens/home.dart';
-import 'App/presentation/screens/page_of_elmoshaf.dart';
 import 'core/shared preferences/shared.dart';
 
 

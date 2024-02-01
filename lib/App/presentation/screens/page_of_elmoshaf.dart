@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:tabarak/App/presentation/controller/quran_provider.dart';
@@ -10,7 +9,6 @@ import 'package:tabarak/core/utils/Style.dart';
 
 import '../../../core/component/Card.dart';
 import '../../../core/component/item_for_verse.dart';
-import 'home.dart';
 
 class PageOfElmoshaf extends StatelessWidget {
   int sura;
@@ -106,7 +104,7 @@ class _ScrollbarBehavior extends ScrollBehavior {
         interactive: true,
         thumbVisibility: true,
         thickness: 10,
-        radius: Radius.circular(30),
+        radius: const Radius.circular(30),
         child: child);
   }
 }
