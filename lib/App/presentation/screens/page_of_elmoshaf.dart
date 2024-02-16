@@ -17,7 +17,7 @@ class PageOfElmoshaf extends StatelessWidget {
   PageOfElmoshaf({
     super.key,
     required this.sura,
-     this.location=0,
+    this.location=0,
   });
 
   final ItemScrollController scrollController = ItemScrollController();
@@ -26,8 +26,8 @@ class PageOfElmoshaf extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(const Duration(microseconds: 1),
             () {
-              scrollController.scrollTo(index: location, duration: const Duration(seconds: 2));
-            });
+          scrollController.scrollTo(index: location, duration: const Duration(seconds: 2));
+        });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Style.mainColor.withOpacity(.6),
@@ -46,13 +46,13 @@ class PageOfElmoshaf extends StatelessWidget {
         ),
         title: Center(
             child: Text(
-          quran.getSurahNameArabic(sura),
-          style: const TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.white
-          ),
-        )),
+              quran.getSurahNameArabic(sura),
+              style: const TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white
+              ),
+            )),
         actions: [
           IconButton(
             onPressed: ()
@@ -73,8 +73,8 @@ class PageOfElmoshaf extends StatelessWidget {
             height: 10,
           ),
           Caard(
-              nameSura: quran.getSurahNameArabic(sura),
-              verses: " ${quran.getVerseCount(sura)} : عدد الآيات ",
+            nameSura: quran.getSurahNameArabic(sura),
+            verses: " ${quran.getVerseCount(sura)} : عدد الآيات ",
             sura: sura,
           ),
           Expanded(
@@ -108,4 +108,3 @@ class _ScrollbarBehavior extends ScrollBehavior {
         child: child);
   }
 }
-

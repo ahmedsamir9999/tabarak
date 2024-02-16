@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:quran/quran.dart';
 import 'package:tabarak/App/presentation/controller/quran_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../core/utils/Style.dart';
 import '../shared preferences/shared.dart';
@@ -50,15 +51,22 @@ class ItemForeVerse extends StatelessWidget {
                     style: const TextStyle(fontSize: 27),
                   ),
                   const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.share),
+                  ElevatedButton(
+                    onPressed: (){
+                      onShare(
+                        context,
+                        quran.getVerse(numOfSurah, (index + 1)),
+                       "ايه",
+                      );
+                    },
+                    child: const Icon(Icons.share),
                   ),
                   Consumer<QuranProvider>(
                     builder: (context, prov, child) {
                       return IconButton(
-                        onPressed: () {
-                          prov.playAudioVerse(index, numOfSurah);
+                        onPressed: () async
+                        {
+                          await prov.playAudioVerse(index, numOfSurah);
                         },
                         icon: Icon(prov.audioCurrent == index
                             ? Icons.pause
@@ -116,3 +124,18 @@ class ItemForeVerse extends StatelessWidget {
     );
   }
 }
+
+
+void onShare(BuildContext context,text,subject) async {
+  // A builder is used to retrieve the context immediately
+  // surrounding the ElevatedButton.
+  //
+  // The context's `findRenderObject` returns the first
+  // RenderObject in its descendent tree when it's not
+  // a RenderObjectWidget. The ElevatedButton's RenderObject
+  // has its position and size after it's built.
+  final box = context.findRenderObject() as RenderBox?;
+    await Share.share(text,
+        subject: subject,
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+  }

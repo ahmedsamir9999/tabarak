@@ -5,13 +5,16 @@ import 'package:tabarak/App/presentation/screens/elsbha_screen.dart';
 import 'package:tabarak/App/presentation/screens/page_of_elmoshaf.dart';
 
 import '../../../core/component/Search.dart';
+import '../../../core/shared preferences/shared.dart';
 import '../../../core/utils/responsive.dart';
 import '../../../core/utils/style.dart';
 import '../controller/home_provider.dart';
 
 class QuranScreen extends StatelessWidget {
-   QuranScreen({super.key});
+  QuranScreen({super.key});
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,21 +23,24 @@ class QuranScreen extends StatelessWidget {
         child: ListView(
           children: [
             const DrawerHeader(
-                child:Center(
-                  child: Text(
-                    'دليل المسلم',
-                    style: TextStyle(
-                      fontSize: 24,
-                      color:  Color(0xff672CBC),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ) ),
+                child: Center(
+              child: Text(
+                'دليل المسلم',
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Color(0xff672CBC),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )),
             Column(
               children: [
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const ElsbhaScreen()));
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ElsbhaScreen()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(30),
@@ -44,7 +50,8 @@ class QuranScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         // color: Colors.purple[100],
                         color: Colors.purple.withOpacity(.4),
-                        borderRadius: const BorderRadius.all(Radius.circular(50)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50)),
                       ),
                       child: const Center(
                         child: Text(
@@ -114,16 +121,15 @@ class QuranScreen extends StatelessWidget {
 
                 ),
             const SizedBox(
-              height: 20,
+              height: 25,
             ),
             Container(
-              // width: 326,
-              width: Responsive.widthPercentage(context, 85),
-              // height: 131,
-              height: Responsive.heightPercentage(context, 18),
+              height: Responsive.heightPercentage(context, 20),
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("lib/core/assets/image/Frame 30.png")),
+                    image: AssetImage(
+                  "lib/core/assets/image/Frame 30.png",
+                )),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -133,10 +139,10 @@ class QuranScreen extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(Icons.confirmation_number_sharp,
-                            color: Colors.white),
+                            color: Colors.black),
                         Text("Last Read",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 // fontSize: 14,
                                 fontSize: Responsive.fontSize(context, 2))),
                       ],
@@ -144,19 +150,30 @@ class QuranScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text("Al-Fatiah",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold)),
+                    MyCache.getInt(key: MyChachKey.saveCurrent) == -1
+                        ? const Text(
+                            '',
+                            style: TextStyle(fontSize: 27),
+                          )
+                        : Text(
+                            quran.getSurahNameArabic(
+                                MyCache.getInt(key: MyChachKey.indexOfSura)),
+                            style: const TextStyle(fontSize: 27),
+                          ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text("Ayah No:1",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        )),
+                    MyCache.getInt(key: MyChachKey.saveCurrent) == -1
+                        ? const Text(
+                            '',
+                            style: TextStyle(fontSize: 27),
+                          )
+                        : Text(
+                            "Ayah No: ${(MyCache.getInt(key: MyChachKey.indexOfAyah)+1)}",
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                            )),
                   ],
                 ),
               ),
@@ -266,7 +283,7 @@ class QuranScreen extends StatelessWidget {
                                           fontSize:
                                               Responsive.fontSize(context, 2))),
                                   Text(
-                                      '${quran.getVerseCount(18)} : عدد الآيات ',
+                                      '${quran.getVerseCount(index + 1)} : عدد الآيات ',
                                       style: TextStyle(
                                           fontSize:
                                               Responsive.fontSize(context, 2))),
